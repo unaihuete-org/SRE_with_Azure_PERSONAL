@@ -45,7 +45,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}  
 
       #does the cluster exist, first deployment detect
-    - name: Get frist deployment BOOL
+    - name: Get first deployment BOOL
       uses: azure/CLI@v1
       id: first-deployment
       with:
@@ -98,7 +98,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ env.RG }}
         template: deploy/bicep/container-app-new.bicep
-        parameters: image=${{env.ACR_REPO}}:${{ github.event.inputs.IMAGE_TAG }} acrPassword=${{ secrets.ACR_PASSWORD }}  newRevisionNumber=${{ github.run_number }}
+        parameters: image=${{env.ACR_REPO}}:${{ github.event.inputs.IMAGE_TAG }} acrPassword=${{ secrets.ACR_PASSWORD }}  acrUsername=${{ secrets.ACR_USERNAME }}  newRevisionNumber=${{ github.run_number }}
         failOnStdErr: false
 
     
