@@ -53,7 +53,6 @@ jobs:
         inlineScript: |
           az config set extension.use_dynamic_install=yes_without_prompt
           empty_answer=[]
-          az provider register -n Microsoft.App --wait
           check=$(az containerapp list --query "[?name=='$ACA_NAME']")
           [ $check==$empty_answer ] && FirstDeployment=true || FirstDeployment=false
           echo "FirstDeployment=$FirstDeployment" >> $GITHUB_ENV
