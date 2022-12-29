@@ -85,7 +85,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ env.RG }}
         template: deploy/bicep/container-app.bicep
-        parameters: image=${{env.ACR_REPO}}:${{ github.event.inputs.IMAGE_TAG }} acrServer=${{ secrets.REGISTRY_LOGIN_SERVER }} acrPassword=${{ secrets.REGISTRY_PASSWORD }}  acrUsername=${{ secrets.REGISTRY_USERNAME }}  newRevisionNumber=${{ github.run_number }} existingRevisionName=${{env.LatestRevision}}
+        parameters: image=${{env.ACR_REPO}}:${{ github.event.inputs.IMAGE_TAG }} acrServer=${{ secrets.REGISTRY_LOGIN_SERVER }} acrPassword=${{ secrets.REGISTRY_PASSWORD }}  acrUsername=${{ secrets.REGISTRY_USERNAME }}  newRevisionNumber=${{ github.run_number }} existingRevisionName=${{env.LatestRevision}} appName=${{ secrets.REGISTRY_USERNAME }}-containerapp environmentName=${{ secrets.REGISTRY_USERNAME }}-environment
         failOnStdErr: false
     
      # Deploy Bicep file (new cluster)
@@ -98,7 +98,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ env.RG }}
         template: deploy/bicep/container-app-new.bicep
-        parameters: image=${{env.ACR_REPO}}:${{ github.event.inputs.IMAGE_TAG }} acrServer=${{ secrets.REGISTRY_LOGIN_SERVER }}    acrPassword=${{ secrets.REGISTRY_PASSWORD }}  acrUsername=${{ secrets.REGISTRY_USERNAME }}  newRevisionNumber=${{ github.run_number }}
+        parameters: image=${{env.ACR_REPO}}:${{ github.event.inputs.IMAGE_TAG }} acrServer=${{ secrets.REGISTRY_LOGIN_SERVER }}    acrPassword=${{ secrets.REGISTRY_PASSWORD }}  acrUsername=${{ secrets.REGISTRY_USERNAME }}  newRevisionNumber=${{ github.run_number }} appName=${{ secrets.REGISTRY_USERNAME }}-containerapp environmentName=${{ secrets.REGISTRY_USERNAME }}-environment
         failOnStdErr: false
 
     
