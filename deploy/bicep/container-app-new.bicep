@@ -1,6 +1,6 @@
 param location string = resourceGroup().location
 
-param appName string = 'srewithazureunai-containerapp'
+param appName string = 'srewithazure-containerapp'
 param environmentName string = 'srewithazureunai-environment'
 param logAnalyticsWorkspaceName string = '${appName}-logs'
 param image string = 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
